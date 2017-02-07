@@ -52,7 +52,7 @@
     End Function
     Public Shared Function getSRC(ByVal hndl As IntPtr) As String
         For Each p As Process In Process.GetProcesses
-            If p.Handle = hndl Then Return p.ProcessName
+            If p.MainWindowHandle = hndl Then Return p.ProcessName
         Next
         Return ""
     End Function

@@ -23,22 +23,20 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Me.lst = New hzClipboard_.hzList
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.lst = New hzClipboard_.hzList
         Me.SuspendLayout()
         '
         'lst
         '
         Me.lst.BackColor = System.Drawing.Color.White
-        Me.lst.COLOR_SCHEME = hzClipboard_.hzListItem.ColorScheme.LIGHT
-        Me.lst.Location = New System.Drawing.Point(13, 12)
+        Me.lst.COLOR_SCHEME = hzClipboard_.hzListItem.ColorScheme.DARK
+        Me.lst.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lst.Location = New System.Drawing.Point(0, 0)
         Me.lst.Name = "lst"
         Me.lst.Padding = New System.Windows.Forms.Padding(6)
-        Me.lst.Size = New System.Drawing.Size(292, 335)
+        Me.lst.Size = New System.Drawing.Size(340, 382)
         Me.lst.TabIndex = 0
-        '
-        'Timer1
-        '
         '
         'Form1
         '
@@ -48,6 +46,7 @@ Partial Class Form1
         Me.Controls.Add(Me.lst)
         Me.Name = "Form1"
         Me.Text = "Form1"
+        Me.TopMost = True
         Me.ResumeLayout(False)
 
     End Sub

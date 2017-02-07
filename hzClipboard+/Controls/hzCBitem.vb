@@ -5,6 +5,15 @@
     Public DataSource As String = ""
     Public Time As DateTime
     Private CSCHEME As ColorScheme
+    Private p As Padding
+    Public Property BORDERS() As Padding
+        Get
+            Return p
+        End Get
+        Set(ByVal value As Padding)
+            p = value
+        End Set
+    End Property
     Public Enum ColorScheme As Integer
         DARK = 0
         LIGHT = 1
@@ -34,6 +43,10 @@
     Friend WithEvents ico As System.Windows.Forms.PictureBox
     Friend WithEvents iDetail As System.Windows.Forms.Label
     Private components As System.ComponentModel.IContainer
+    Friend WithEvents cx As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents COPYCNTNT As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DELCNTNT As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents svIMG As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents iTitle As System.Windows.Forms.Label
     Public Sub Initializ()
         Select Case Type
@@ -56,13 +69,16 @@
             AddHandler c.MouseEnter, AddressOf MouseEnter_g
             AddHandler c.MouseLeave, AddressOf MouseLeave_g
         Next
-
+        svIMG.Visible = (Type = hz.hzDataType.IMAGE)
+        Me.Padding = p
     End Sub
     Sub normalUI()
         Me.BackColor = getColorScheme(Me.CSCHEME)(CSi.BACKGROUND)
         Me.ForeColor = getColorScheme(Me.CSCHEME)(CSi.FRONT)
         iTitle.ForeColor = getColorScheme(Me.CSCHEME)(CSi.FRONT)
         iDetail.ForeColor = getColorScheme(Me.CSCHEME)(CSi.FRONT)
+        cx.BackColor = getColorScheme(Me.CSCHEME)(CSi.BACKGROUND)
+        cx.ForeColor = getColorScheme(Me.CSCHEME)(CSi.FRONT)
     End Sub
     Sub hoverUI()
         Me.BackColor = getColorScheme(Me.CSCHEME)(CSi.BACKGROUND_H)
@@ -79,12 +95,18 @@
         Me.SendToBack()
     End Sub
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container
         Me.iTitle = New System.Windows.Forms.Label
         Me.iDetail = New System.Windows.Forms.Label
         Me.ico = New System.Windows.Forms.PictureBox
         Me.iTool = New System.Windows.Forms.PictureBox
+        Me.cx = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.COPYCNTNT = New System.Windows.Forms.ToolStripMenuItem
+        Me.DELCNTNT = New System.Windows.Forms.ToolStripMenuItem
+        Me.svIMG = New System.Windows.Forms.ToolStripMenuItem
         CType(Me.ico, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.iTool, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.cx.SuspendLayout()
         Me.SuspendLayout()
         '
         'iTitle
@@ -135,6 +157,31 @@
         Me.iTool.TabIndex = 6
         Me.iTool.TabStop = False
         '
+        'cx
+        '
+        Me.cx.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.COPYCNTNT, Me.svIMG, Me.DELCNTNT})
+        Me.cx.Name = "cx"
+        Me.cx.Size = New System.Drawing.Size(153, 92)
+        '
+        'COPYCNTNT
+        '
+        Me.COPYCNTNT.Name = "COPYCNTNT"
+        Me.COPYCNTNT.Size = New System.Drawing.Size(152, 22)
+        Me.COPYCNTNT.Text = "Copy Content"
+        '
+        'DELCNTNT
+        '
+        Me.DELCNTNT.Name = "DELCNTNT"
+        Me.DELCNTNT.Size = New System.Drawing.Size(152, 22)
+        Me.DELCNTNT.Text = "Delete"
+        '
+        'svIMG
+        '
+        Me.svIMG.Name = "svIMG"
+        Me.svIMG.Size = New System.Drawing.Size(152, 22)
+        Me.svIMG.Text = "Save Image"
+        Me.svIMG.Visible = False
+        '
         'hzListItem
         '
         Me.BackColor = System.Drawing.Color.Gainsboro
@@ -146,6 +193,7 @@
         Me.Size = New System.Drawing.Size(361, 49)
         CType(Me.ico, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.iTool, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.cx.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -158,6 +206,10 @@
     Private Sub MouseLeave_g(ByVal sender As Object, ByVal e As System.EventArgs)
         normalUI()
         iTool.Image = Nothing
+    End Sub
+
+    Private Sub hzListItem_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Click, iTitle.Click, ico.Click, iDetail.Click
+        iTool_Click(sender, e)
     End Sub
 
     Private Sub hzListItem_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -203,5 +255,10 @@
     Private Function cl(ByVal r As Integer, ByVal g As Integer, ByVal b As Integer) As Color
         Return Color.FromArgb(r, g, b)
     End Function
+
+    Private Sub iTool_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles iTool.Click
+        cx.Width = Me.Width
+        cx.Show(iTool, (0 - cx.Width) + iTool.Width, 0)
+    End Sub
 End Class
 
