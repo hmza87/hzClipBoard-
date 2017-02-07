@@ -1,0 +1,12 @@
+C:\Users\HAMZA\Documents\Visual Studio 2008\Projects\hzClipboard+\hzClipboard+\bin\Debug\hzClipboard+.exe
+C:\Users\HAMZA\Documents\Visual Studio 2008\Projects\hzClipboard+\hzClipboard+\bin\Debug\hzClipboard+.pdb
+C:\Users\HAMZA\Documents\Visual Studio 2008\Projects\hzClipboard+\hzClipboard+\bin\Debug\hzClipboard+.xml
+C:\Users\HAMZA\Documents\Visual Studio 2008\Projects\hzClipboard+\hzClipboard+\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\HAMZA\Documents\Visual Studio 2008\Projects\hzClipboard+\hzClipboard+\obj\Debug\hzClipboard_.hzListItem.resources
+C:\Users\HAMZA\Documents\Visual Studio 2008\Projects\hzClipboard+\hzClipboard+\obj\Debug\hzClipboard_.hzList.resources
+C:\Users\HAMZA\Documents\Visual Studio 2008\Projects\hzClipboard+\hzClipboard+\obj\Debug\hzClipboard_.Form1.resources
+C:\Users\HAMZA\Documents\Visual Studio 2008\Projects\hzClipboard+\hzClipboard+\obj\Debug\hzClipboard_.Resources.resources
+C:\Users\HAMZA\Documents\Visual Studio 2008\Projects\hzClipboard+\hzClipboard+\obj\Debug\hzClipboard+.vbproj.GenerateResource.Cache
+C:\Users\HAMZA\Documents\Visual Studio 2008\Projects\hzClipboard+\hzClipboard+\obj\Debug\hzClipboard+.exe
+C:\Users\HAMZA\Documents\Visual Studio 2008\Projects\hzClipboard+\hzClipboard+\obj\Debug\hzClipboard+.xml
+C:\Users\HAMZA\Documents\Visual Studio 2008\Projects\hzClipboard+\hzClipboard+\obj\Debug\hzClipboard+.pdb
