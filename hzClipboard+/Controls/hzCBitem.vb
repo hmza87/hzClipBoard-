@@ -47,6 +47,7 @@
     Friend WithEvents COPYCNTNT As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DELCNTNT As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents svIMG As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents svfile As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents iTitle As System.Windows.Forms.Label
     Public Sub Initializ()
         Select Case Type
@@ -70,7 +71,8 @@
             AddHandler c.MouseLeave, AddressOf MouseLeave_g
         Next
         svIMG.Visible = (Type = hz.hzDataType.IMAGE)
-        Me.Padding = p
+        svfile.Visible = (Type = hz.hzDataType.TEXT)
+        'Me.Padding = p
     End Sub
     Sub normalUI()
         Me.BackColor = getColorScheme(Me.CSCHEME)(CSi.BACKGROUND)
@@ -102,8 +104,9 @@
         Me.iTool = New System.Windows.Forms.PictureBox
         Me.cx = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.COPYCNTNT = New System.Windows.Forms.ToolStripMenuItem
-        Me.DELCNTNT = New System.Windows.Forms.ToolStripMenuItem
         Me.svIMG = New System.Windows.Forms.ToolStripMenuItem
+        Me.DELCNTNT = New System.Windows.Forms.ToolStripMenuItem
+        Me.svfile = New System.Windows.Forms.ToolStripMenuItem
         CType(Me.ico, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.iTool, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.cx.SuspendLayout()
@@ -159,28 +162,35 @@
         '
         'cx
         '
-        Me.cx.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.COPYCNTNT, Me.svIMG, Me.DELCNTNT})
+        Me.cx.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.COPYCNTNT, Me.svIMG, Me.svfile, Me.DELCNTNT})
         Me.cx.Name = "cx"
-        Me.cx.Size = New System.Drawing.Size(153, 92)
+        Me.cx.Size = New System.Drawing.Size(156, 114)
         '
         'COPYCNTNT
         '
         Me.COPYCNTNT.Name = "COPYCNTNT"
-        Me.COPYCNTNT.Size = New System.Drawing.Size(152, 22)
+        Me.COPYCNTNT.Size = New System.Drawing.Size(155, 22)
         Me.COPYCNTNT.Text = "Copy Content"
-        '
-        'DELCNTNT
-        '
-        Me.DELCNTNT.Name = "DELCNTNT"
-        Me.DELCNTNT.Size = New System.Drawing.Size(152, 22)
-        Me.DELCNTNT.Text = "Delete"
         '
         'svIMG
         '
         Me.svIMG.Name = "svIMG"
-        Me.svIMG.Size = New System.Drawing.Size(152, 22)
+        Me.svIMG.Size = New System.Drawing.Size(155, 22)
         Me.svIMG.Text = "Save Image"
         Me.svIMG.Visible = False
+        '
+        'DELCNTNT
+        '
+        Me.DELCNTNT.Name = "DELCNTNT"
+        Me.DELCNTNT.Size = New System.Drawing.Size(155, 22)
+        Me.DELCNTNT.Text = "Delete"
+        '
+        'svfile
+        '
+        Me.svfile.Name = "svfile"
+        Me.svfile.Size = New System.Drawing.Size(155, 22)
+        Me.svfile.Text = "Save Text to file"
+        Me.svfile.Visible = False
         '
         'hzListItem
         '
@@ -259,6 +269,32 @@
     Private Sub iTool_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles iTool.Click
         cx.Width = Me.Width
         cx.Show(iTool, (0 - cx.Width) + iTool.Width, 0)
+    End Sub
+
+    Private Sub COPYCNTNT_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COPYCNTNT.Click
+        If Me.Type = hz.hzDataType.TEXT Then
+            Clipboard.SetText(Me.DATA)
+        ElseIf Me.Type = hz.hzDataType.IMAGE Then
+            Clipboard.SetImage(Me.DATA)
+        End If
+    End Sub
+
+    Private Sub svIMG_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles svIMG.Click
+        Using o As New SaveFileDialog
+            o.Filter = "PNG Image|*.png|JPG Image|*.jpg"
+            If o.ShowDialog = DialogResult.OK Then
+                CType(Me.DATA, Bitmap).Save(o.FileName)
+            End If
+        End Using
+    End Sub
+
+    Private Sub svfile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles svfile.Click
+        Using o As New SaveFileDialog
+            o.Filter = "Text File|*.txt|All files|*.*"
+            If o.ShowDialog = DialogResult.OK Then
+                IO.File.WriteAllText(o.FileName, CType(Me.DATA, String))
+            End If
+        End Using
     End Sub
 End Class
 

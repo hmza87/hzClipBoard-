@@ -17,7 +17,7 @@
     Public Sub initializ()
         body.Controls.Clear()
         For Each i As hzListItem In _list
-            i.BORDERS = New Padding(0, 0, 0, 5)
+            'i.BORDERS = New Padding(0, 0, 0, 5)
             i.ColorSchema = Cs
             body.Controls.Add(i)
 
@@ -34,7 +34,11 @@
         Catch ex As Exception
 
         End Try
-
+        If _list.Count > 0 Then
+            Me.BackColor = Items(0).getColorScheme(Items(0).ColorSchema)(0)
+            body.BackColor = Items(0).getColorScheme(Items(0).ColorSchema)(0)
+            paren.BackColor = Items(0).getColorScheme(Items(0).ColorSchema)(0)
+        End If
     End Sub
     Public Function Items() As List(Of hzListItem)
         Return _list
@@ -59,6 +63,8 @@
 
 
         InitializeComponent()
+
+
     End Sub
 
     Private Sub InitializeComponent()
@@ -78,9 +84,9 @@
         'sc
         '
         Me.sc.Dock = System.Windows.Forms.DockStyle.Right
-        Me.sc.Location = New System.Drawing.Point(292, 6)
+        Me.sc.Location = New System.Drawing.Point(298, 0)
         Me.sc.Name = "sc"
-        Me.sc.Size = New System.Drawing.Size(17, 398)
+        Me.sc.Size = New System.Drawing.Size(17, 410)
         Me.sc.TabIndex = 4
         '
         'paren
@@ -88,9 +94,9 @@
         Me.paren.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.paren.Controls.Add(Me.body)
         Me.paren.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.paren.Location = New System.Drawing.Point(6, 6)
+        Me.paren.Location = New System.Drawing.Point(0, 0)
         Me.paren.Name = "paren"
-        Me.paren.Size = New System.Drawing.Size(286, 398)
+        Me.paren.Size = New System.Drawing.Size(298, 410)
         Me.paren.TabIndex = 5
         '
         'hzList
@@ -98,7 +104,6 @@
         Me.Controls.Add(Me.paren)
         Me.Controls.Add(Me.sc)
         Me.Name = "hzList"
-        Me.Padding = New System.Windows.Forms.Padding(6)
         Me.Size = New System.Drawing.Size(315, 410)
         Me.paren.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -116,5 +121,9 @@
 
     Private Sub sc_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles sc.ValueChanged
         body.Top = -sc.Value
+    End Sub
+
+    Private Sub paren_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles paren.Paint
+
     End Sub
 End Class

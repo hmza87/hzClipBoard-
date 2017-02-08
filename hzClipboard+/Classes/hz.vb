@@ -51,8 +51,17 @@
         Return result
     End Function
     Public Shared Function getSRC(ByVal hndl As IntPtr) As String
+        Dim lst As New List(Of String)
+
         For Each p As Process In Process.GetProcesses
-            If p.MainWindowHandle = hndl Then Return p.ProcessName
+            Try
+                If CType(hndl, String).Replace("04", "") = p.ProcessName Then
+                    Return p.Handle
+                End If
+            Catch ex As Exception
+                'lst.Add(p.ProcessName)
+            End Try
+
         Next
         Return ""
     End Function

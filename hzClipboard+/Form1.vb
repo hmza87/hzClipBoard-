@@ -4,6 +4,8 @@ Public Class Form1
     Private Const WM_DRAWCLIPBOARD As Integer = 776
     Private Const WM_CHANGECBCHAIN As Integer = 781
     Private fpChainedWindowHandle As IntPtr
+    Private mouseOffset As Point
+    Private cloz As Boolean = False
     Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
         MyBase.WndProc(m)
         If m.Msg = WM_DRAWCLIPBOARD Then
@@ -31,21 +33,38 @@ Public Class Form1
                                  ByVal wParam As IntPtr, _
                                  ByVal lParam As IntPtr) As IntPtr
     End Function
+
+    Private Sub Form1_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        If Not cloz Then
+            e.Cancel = True
+            HideME()
+        End If
+    End Sub
     Private Sub Form1_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
         'add yourself to the clipboard viewer
         fpChainedWindowHandle = SetClipboardViewer(Me.Handle)
     End Sub
     Dim lastItem As hzListItem, lastData As IDataObject, lastIMG As Bitmap, lastStr As String
+    Sub initUI()
+        With Me
+            .Top = Screen.PrimaryScreen.WorkingArea.Height - .Height
+            .Left = Screen.PrimaryScreen.WorkingArea.Width - .Width
 
+        End With
+    End Sub
 
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        HideME()
         'lst.Items().Add(New hzListItem(New Bitmap("C:\Users\HAMZA\Desktop\tmp\1.png"), hz.hzDataType.IMAGE, "Explorer"))
         'For i As Integer = 0 To 4
         '    Dim l As New hzListItem("ssssz " & i, hz.hzDataType.TEXT, "CHROME")
         '    lst.Items().Add(l)
         'Next
         'lst.initializ()
+        det.Text = String.Format(det.Text, Now.Hour & ":" & Now.Minute, _
+                                  Now.Date.ToShortDateString, Process.GetCurrentProcess.Id)
+        initUI()
     End Sub
 
     Private Sub getC()
@@ -73,6 +92,92 @@ Public Class Form1
             lastIMG = img
 
         End If
+        If lst.Items.Count > 0 Then
+            head.BackColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.FRONT)
+            logo.ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
+            det.ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
+            Label1.ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
+        End If
         lst.initializ()
+    End Sub
+
+    Private Sub Me_MouseDown(ByVal sender As Object, _
+        ByVal e As MouseEventArgs) _
+        Handles MyBase.MouseDown, head.MouseDown, logo.MouseDown
+
+        mouseOffset = New Point(-e.X, -e.Y)
+    End Sub
+
+    Private Sub Me_MouseMove(ByVal sender As Object, _
+        ByVal e As MouseEventArgs) _
+        Handles MyBase.MouseMove, head.MouseMove, logo.MouseMove
+
+        If e.Button = MouseButtons.Left Then
+            Dim mousePos As Point = Control.MousePosition
+            mousePos.Offset(mouseOffset.X, mouseOffset.Y)
+            Location = mousePos
+        End If
+    End Sub
+
+    Private Sub Label1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label1.Click
+        With Label1
+            If .Text = "DARK" Then
+                lst.COLOR_SCHEME = hzListItem.ColorScheme.LIGHT
+                .Text = "LIGHT"
+            Else
+                lst.COLOR_SCHEME = hzListItem.ColorScheme.DARK
+                .Text = "DARK"
+            End If
+        End With
+        If lst.Items.Count > 0 Then
+            head.BackColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.FRONT)
+            logo.ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
+            Label1.ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
+            det.ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
+
+        End If
+    End Sub
+
+    Sub HideME()
+        Me.Hide()
+    End Sub
+    Sub ShowME()
+        Me.Show()
+    End Sub
+    
+
+    Private Sub clo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles clo.Click
+        HideME()
+    End Sub
+
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+
+    End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
+        cloz = True
+        Me.Close()
+    End Sub
+
+    Private Sub ShowHideToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ShowHideToolStripMenuItem.Click
+        ShowME()
+    End Sub
+
+    Private Sub noti_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles noti.Click
+
+    End Sub
+
+    Private Sub noti_MouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles noti.MouseDoubleClick
+
+    End Sub
+
+    Private Sub lst_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lst.Load
+
+    End Sub
+
+    Private Sub noti_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles noti.MouseUp
+        If e.Button = Windows.Forms.MouseButtons.Left Then
+            If Me.Visible Then HideME() Else ShowME()
+        End If
     End Sub
 End Class
