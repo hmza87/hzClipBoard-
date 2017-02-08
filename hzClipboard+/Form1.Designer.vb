@@ -32,8 +32,8 @@ Partial Class Form1
         Me.clo = New System.Windows.Forms.Label
         Me.noti = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.cntxx = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
         Me.ShowHideToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.lst = New hzClipboard_.hzList
         Me.head.SuspendLayout()
@@ -113,25 +113,25 @@ Partial Class Form1
         '
         Me.cntxx.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShowHideToolStripMenuItem, Me.ToolStripSeparator1, Me.ExitToolStripMenuItem})
         Me.cntxx.Name = "ContextMenuStrip1"
-        Me.cntxx.Size = New System.Drawing.Size(153, 76)
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        Me.cntxx.Size = New System.Drawing.Size(134, 54)
         '
         'ShowHideToolStripMenuItem
         '
         Me.ShowHideToolStripMenuItem.Image = Global.hzClipboard_.My.Resources.Resources._1486590425_icons_view
         Me.ShowHideToolStripMenuItem.Name = "ShowHideToolStripMenuItem"
-        Me.ShowHideToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ShowHideToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
         Me.ShowHideToolStripMenuItem.Text = "Show/Hide"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(130, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Image = Global.hzClipboard_.My.Resources.Resources._1486590457_icons_exit
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'lst
