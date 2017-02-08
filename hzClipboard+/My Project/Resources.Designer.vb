@@ -60,6 +60,55 @@ Namespace My.Resources
             End Set
         End Property
         
+        Friend ReadOnly Property _1486590376_icons_view() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("1486590376_icons_view", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property _1486590376_icons_view1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("1486590376_icons_view1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property _1486590425_icons_view() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("1486590425_icons_view", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property _1486590457_icons_exit() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("1486590457_icons_exit", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property _1486590521_Copy() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("1486590521_Copy", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property _1486590549_BT_save() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("1486590549_BT_save", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property _1486590581_trash_bin() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("1486590581_trash_bin", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property ic_more_vert_black_48dp() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("ic_more_vert_black_48dp", resourceCulture)

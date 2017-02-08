@@ -129,6 +129,27 @@
     <None Include="My Project\app.manifest" />
     <None Include="Resources\ic_more_vert_black_48dp.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1486590376_icons_view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1486590376_icons_view1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1486590425_icons_view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1486590457_icons_exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1486590521_Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1486590549_BT_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1486590581_trash_bin.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -100,16 +100,16 @@
         Me.components = New System.ComponentModel.Container
         Me.iTitle = New System.Windows.Forms.Label
         Me.iDetail = New System.Windows.Forms.Label
+        Me.cx = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.svfile = New System.Windows.Forms.ToolStripMenuItem
+        Me.DELCNTNT = New System.Windows.Forms.ToolStripMenuItem
         Me.ico = New System.Windows.Forms.PictureBox
         Me.iTool = New System.Windows.Forms.PictureBox
-        Me.cx = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.COPYCNTNT = New System.Windows.Forms.ToolStripMenuItem
         Me.svIMG = New System.Windows.Forms.ToolStripMenuItem
-        Me.DELCNTNT = New System.Windows.Forms.ToolStripMenuItem
-        Me.svfile = New System.Windows.Forms.ToolStripMenuItem
+        Me.cx.SuspendLayout()
         CType(Me.ico, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.iTool, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.cx.SuspendLayout()
         Me.SuspendLayout()
         '
         'iTitle
@@ -136,6 +136,27 @@
         Me.iDetail.TabIndex = 5
         Me.iDetail.Text = "Detail"
         '
+        'cx
+        '
+        Me.cx.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.COPYCNTNT, Me.svIMG, Me.svfile, Me.DELCNTNT})
+        Me.cx.Name = "cx"
+        Me.cx.Size = New System.Drawing.Size(156, 114)
+        '
+        'svfile
+        '
+        Me.svfile.Image = Global.hzClipboard_.My.Resources.Resources._1486590549_BT_save
+        Me.svfile.Name = "svfile"
+        Me.svfile.Size = New System.Drawing.Size(155, 22)
+        Me.svfile.Text = "Save Text to file"
+        Me.svfile.Visible = False
+        '
+        'DELCNTNT
+        '
+        Me.DELCNTNT.Image = Global.hzClipboard_.My.Resources.Resources._1486590581_trash_bin
+        Me.DELCNTNT.Name = "DELCNTNT"
+        Me.DELCNTNT.Size = New System.Drawing.Size(155, 22)
+        Me.DELCNTNT.Text = "Delete"
+        '
         'ico
         '
         Me.ico.BackColor = System.Drawing.Color.Transparent
@@ -160,37 +181,20 @@
         Me.iTool.TabIndex = 6
         Me.iTool.TabStop = False
         '
-        'cx
-        '
-        Me.cx.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.COPYCNTNT, Me.svIMG, Me.svfile, Me.DELCNTNT})
-        Me.cx.Name = "cx"
-        Me.cx.Size = New System.Drawing.Size(156, 114)
-        '
         'COPYCNTNT
         '
+        Me.COPYCNTNT.Image = Global.hzClipboard_.My.Resources.Resources._1486590521_Copy
         Me.COPYCNTNT.Name = "COPYCNTNT"
         Me.COPYCNTNT.Size = New System.Drawing.Size(155, 22)
         Me.COPYCNTNT.Text = "Copy Content"
         '
         'svIMG
         '
+        Me.svIMG.Image = Global.hzClipboard_.My.Resources.Resources._1486590549_BT_save
         Me.svIMG.Name = "svIMG"
         Me.svIMG.Size = New System.Drawing.Size(155, 22)
         Me.svIMG.Text = "Save Image"
         Me.svIMG.Visible = False
-        '
-        'DELCNTNT
-        '
-        Me.DELCNTNT.Name = "DELCNTNT"
-        Me.DELCNTNT.Size = New System.Drawing.Size(155, 22)
-        Me.DELCNTNT.Text = "Delete"
-        '
-        'svfile
-        '
-        Me.svfile.Name = "svfile"
-        Me.svfile.Size = New System.Drawing.Size(155, 22)
-        Me.svfile.Text = "Save Text to file"
-        Me.svfile.Visible = False
         '
         'hzListItem
         '
@@ -201,9 +205,9 @@
         Me.Controls.Add(Me.iTool)
         Me.Name = "hzListItem"
         Me.Size = New System.Drawing.Size(361, 49)
+        Me.cx.ResumeLayout(False)
         CType(Me.ico, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.iTool, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.cx.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -295,6 +299,13 @@
                 IO.File.WriteAllText(o.FileName, CType(Me.DATA, String))
             End If
         End Using
+    End Sub
+
+    Private Sub DELCNTNT_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DELCNTNT.Click
+        If MessageBox.Show("You sur?", "Confirme delete action", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = DialogResult.Yes Then
+
+            Me.Visible = False
+        End If
     End Sub
 End Class
 

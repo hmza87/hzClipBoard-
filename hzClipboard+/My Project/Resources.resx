@@ -121,4 +121,25 @@
   <data name="ic_more_vert_black_48dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_more_vert_black_48dp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="1486590521_Copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1486590521_Copy.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1486590549_BT_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1486590549_BT_save.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1486590425_icons_view" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1486590425_icons_view.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1486590376_icons_view1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1486590376_icons_view1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1486590457_icons_exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1486590457_icons_exit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1486590376_icons_view" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1486590376_icons_view.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1486590581_trash_bin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1486590581_trash_bin.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

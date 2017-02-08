@@ -62,8 +62,7 @@ Public Class Form1
         '    lst.Items().Add(l)
         'Next
         'lst.initializ()
-        det.Text = String.Format(det.Text, Now.Hour & ":" & Now.Minute, _
-                                  Now.Date.ToShortDateString, Process.GetCurrentProcess.Id)
+        det.Text = String.Format(det.Text, Now.Hour & ":" & Now.Minute & "." & Now.Second)
         initUI()
     End Sub
 
@@ -130,14 +129,26 @@ Public Class Form1
             End If
         End With
         If lst.Items.Count > 0 Then
-            head.BackColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.FRONT)
-            logo.ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
-            Label1.ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
-            det.ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
-
+            initUIcolors()
         End If
     End Sub
+    Sub initUIColors()
+        Dim re As Boolean = False
+        If lst.Items.Count < 1 Then
+            lst.Items.Add(New hzListItem("", hz.hzDataType.TEXT, ""))
+            re = True
+        End If
 
+        head.BackColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.FRONT)
+        logo.ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
+        Label1.ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
+        det.ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
+        clo.ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
+        cntxx.ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.FRONT)
+        cntxx.BackColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
+
+        If re Then lst.Items.Clear() : re = False
+    End Sub
     Sub HideME()
         Me.Hide()
     End Sub
@@ -179,5 +190,29 @@ Public Class Form1
         If e.Button = Windows.Forms.MouseButtons.Left Then
             If Me.Visible Then HideME() Else ShowME()
         End If
+    End Sub
+
+    Private Sub logo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles logo.Click
+
+    End Sub
+
+    Private Sub logo_MouseEnter(ByVal sender As Object, ByVal e As System.EventArgs) Handles logo.MouseEnter
+        det.Visible = True
+    End Sub
+
+    Private Sub logo_MouseLeave(ByVal sender As Object, ByVal e As System.EventArgs) Handles logo.MouseLeave
+        det.Visible = False
+    End Sub
+
+    Private Sub clo_MouseEnter(ByVal sender As Object, ByVal e As System.EventArgs) Handles clo.MouseEnter, Label1.MouseEnter
+
+        If lst.Items.Count > 0 Then DirectCast(sender, Label).ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND_H)
+
+    End Sub
+
+    Private Sub clo_MouseLeave(ByVal sender As Object, ByVal e As System.EventArgs) Handles clo.MouseLeave, Label1.MouseLeave
+
+        If lst.Items.Count > 0 Then DirectCast(sender, Label).ForeColor = lst.Items(0).getColorScheme(lst.Items(0).ColorSchema)(hzListItem.CSi.BACKGROUND)
+
     End Sub
 End Class
