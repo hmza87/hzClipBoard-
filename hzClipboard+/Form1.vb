@@ -56,6 +56,7 @@ Public Class Form1
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         HideME()
+		dim k as string
         'lst.Items().Add(New hzListItem(New Bitmap("C:\Users\HAMZA\Desktop\tmp\1.png"), hz.hzDataType.IMAGE, "Explorer"))
         'For i As Integer = 0 To 4
         '    Dim l As New hzListItem("ssssz " & i, hz.hzDataType.TEXT, "CHROME")
