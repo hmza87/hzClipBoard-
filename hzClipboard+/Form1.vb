@@ -36,6 +36,7 @@ Public Class Form1
 
     Private Sub Form1_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         If Not cloz Then
+			dim k = "hassan"
             e.Cancel = True
             HideME()
         End If
